@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "GuestMoveResponse",
+    "type": "object",
+    "properties": {
+      "piece": {
+        "type": "object",
+        "properties": {
+          "hasMoved": {
+            "type": "boolean"
+          },
+          "lastMoveTurn": {
+            "type": "integer"
+          },
+          "direction": {
+            "type": "integer"
+          },
+          "color": {
+            "type": "string",
+            "enum": ["WHITE", "BLACK"]
+          },
+          "type": {
+            "type": "string",
+            "enum": ["PAWN", "KNIGHT", "BISHOP", "ROOK", "QUEEN", "KING"]
+          },
+          "location": {
+            "$ref": "#/definitions/chessCoordinate"
+          }
+        },
+        "required": ["color", "type", "location"]
+      },
+      "destination": {
+        "$ref": "#/definitions/chessCoordinate"
+      },
+      "board": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "color": {
+                    "type": "string",
+                    "enum": ["WHITE", "BLACK"]
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["PAWN", "KNIGHT", "BISHOP", "ROOK", "QUEEN", "KING"]
+                  },
+                  "location": {
+                    "$ref": "#/definitions/chessCoordinate"
+                  }
+                },
+                "required": ["color", "type", "location"]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "validity": {
+        "type": "boolean"
+      },
+      "requestType": {
+        "type": "string",
+        "enum": ["guestMove"]
+      }
+    },
+    "required": ["piece", "destination", "board", "validity", "requestType"],
+    "definitions": {
+      "chessCoordinate": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 7
+          },
+          "y": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 7
+          }
+        },
+        "required": ["x", "y"]
+      }
+    }
+  }
+  

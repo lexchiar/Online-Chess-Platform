@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Validate Moves Request",
+    "description": "Schema to validate possible moves for a chess piece.",
+    "type": "object",
+    "properties": {
+      "requestType": {
+        "type": "string",
+        "description": "The type of request being made, e.g., 'validateMoves'."
+      },
+      "piece": {
+        "type": "object",
+        "description": "Details about the piece being validated.",
+        "properties": {
+          "color": {
+            "type": "string",
+            "description": "The color of the chess piece, e.g., 'white' or 'black'."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the chess piece, e.g., 'queen', 'rook'."
+          },
+          "location": {
+            "type": "object",
+            "description": "The current location of the piece on the board.",
+            "properties": {
+              "x": {
+                "type": "integer",
+                "description": "The x-coordinate (column) of the piece."
+              },
+              "y": {
+                "type": "integer",
+                "description": "The y-coordinate (row) of the piece."
+              }
+            },
+            "required": ["x", "y"]
+          }
+        },
+        "required": ["color", "type", "location"]
+      },
+      "board": {
+        "type": "array",
+        "description": "A 2D array representing the chessboard state.",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": ["object", "null"],
+            "description": "Each item represents a piece or an empty square. A null value indicates an empty square."
+          }
+        }
+      }
+    },
+    "required": ["requestType", "piece", "board"]
+  }
+  
