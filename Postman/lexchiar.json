@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "62055805-d950-4bfc-b3b4-edcb85714e9e",
+		"name": "lexchiar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38971679"
+	},
+	"item": [
+		{
+			"name": "GuestMove Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has a status code of 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has expected structure\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.have.all.keys(\"piece\", \"destination\", \"board\", \"validity\", \"requestType\");\r",
+							"    pm.expect(responseJson.requestType).to.equal(\"guestMove\");\r",
+							"    pm.expect(responseJson.destination).to.have.all.keys(\"x\", \"y\");\r",
+							"    pm.expect(responseJson.board).to.be.an(\"array\");\r",
+							"    pm.expect(responseJson.validity).to.be.a(\"boolean\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"guestMove\",\r\n    \"piece\": {\r\n        \"color\": \"WHITE\",\r\n        \"type\": \"PAWN\",\r\n        \"location\": {\r\n            \"x\": 6,\r\n            \"y\": 4\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"x\": 4,\r\n        \"y\": 4\r\n    },\r\n    \"board\": [\r\n        [\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"ROOK\",\r\n                \"location\": {\r\n                    \"x\": 0,\r\n                    \"y\": 0\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"KNIGHT\",\r\n                \"location\": {\r\n                    \"x\": 0,\r\n                    \"y\": 1\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"BISHOP\",\r\n                \"location\": {\r\n                    \"x\": 0,\r\n                    \"y\": 2\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"QUEEN\",\r\n                \"location\": {\r\n                    \"x\": 0,\r\n                    \"y\": 3\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"KING\",\r\n                \"location\": {\r\n                    \"x\": 0,\r\n                    \"y\": 4\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"BISHOP\",\r\n                \"location\": {\r\n                    \"x\": 0,\r\n                    \"y\": 5\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"KNIGHT\",\r\n                \"location\": {\r\n                    \"x\": 0,\r\n                    \"y\": 6\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"ROOK\",\r\n                \"location\": {\r\n                    \"x\": 0,\r\n                    \"y\": 7\r\n                }\r\n            }\r\n        ],\r\n        [\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 0\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 1\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 2\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 3\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 4\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 5\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 6\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"BLACK\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 7\r\n                }\r\n            }\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 6,\r\n                    \"y\": 0\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 6,\r\n                    \"y\": 1\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 6,\r\n                    \"y\": 2\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 6,\r\n                    \"y\": 3\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 6,\r\n                    \"y\": 4\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 6,\r\n                    \"y\": 5\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 6,\r\n                    \"y\": 6\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 6,\r\n                    \"y\": 7\r\n                }\r\n            }\r\n        ],\r\n        [\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"ROOK\",\r\n                \"location\": {\r\n                    \"x\": 7,\r\n                    \"y\": 0\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"KNIGHT\",\r\n                \"location\": {\r\n                    \"x\": 7,\r\n                    \"y\": 1\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"BISHOP\",\r\n                \"location\": {\r\n                    \"x\": 7,\r\n                    \"y\": 2\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"QUEEN\",\r\n                \"location\": {\r\n                    \"x\": 7,\r\n                    \"y\": 3\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"KING\",\r\n                \"location\": {\r\n                    \"x\": 7,\r\n                    \"y\": 4\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"BISHOP\",\r\n                \"location\": {\r\n                    \"x\": 7,\r\n                    \"y\": 5\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"KNIGHT\",\r\n                \"location\": {\r\n                    \"x\": 7,\r\n                    \"y\": 6\r\n                }\r\n            },\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"ROOK\",\r\n                \"location\": {\r\n                    \"x\": 7,\r\n                    \"y\": 7\r\n                }\r\n            }\r\n        ]\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/guestMove",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"guestMove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestPawnTwoMoveForward",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has a status code of 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response validity for pawn moving two spaces forward\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"\r",
+							"    // Check that the response indicates the move's validity\r",
+							"    pm.expect(responseJson.validity).to.equal(true, \"Expected pawn move to be valid\");\r",
+							"    \r",
+							"    // Additional checks to ensure the response structure is correct\r",
+							"    pm.expect(responseJson).to.have.all.keys(\"piece\", \"destination\", \"board\", \"validity\", \"requestType\");\r",
+							"    pm.expect(responseJson.requestType).to.equal(\"guestMove\");\r",
+							"    pm.expect(responseJson.destination).to.have.all.keys(\"x\", \"y\");\r",
+							"    pm.expect(responseJson.board).to.be.an(\"array\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"guestMove\",\r\n    \"piece\": {\r\n        \"color\": \"WHITE\",\r\n        \"type\": \"PAWN\",\r\n        \"location\": {\r\n            \"x\": 1,\r\n            \"y\": 1\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"x\": 1,\r\n        \"y\": 3\r\n    },\r\n    \"board\": [\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"PAWN\",\r\n                \"location\": {\r\n                    \"x\": 1,\r\n                    \"y\": 1\r\n                }\r\n            },\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ]\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/guestMove",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"guestMove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestValidateMoveWhitePawn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has valid moves\", function () {\r",
+							"    const response = pm.response.json();\r",
+							"\r",
+							"    pm.expect(response).to.have.property(\"validMoves\");\r",
+							"    pm.expect(response.validMoves).to.be.an(\"array\");\r",
+							"    pm.expect(response.validMoves.length).to.be.above(0);\r",
+							"\r",
+							"    // Example: Check specific valid moves for a knight at (1, 0)\r",
+							"    const expectedMoves = [\r",
+							"        { x: 1, y: 2 },\r",
+							"        { x: 1, y: 3 }\r",
+							"    ];\r",
+							"    expectedMoves.forEach(move => {\r",
+							"        pm.expect(response.validMoves).to.deep.include(move);\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"piece\": {\r\n        \"type\": \"PAWN\",\r\n        \"color\": \"WHITE\",\r\n        \"location\": {\r\n            \"x\": 1,\r\n            \"y\": 1\r\n        }\r\n    },\r\n    \"board\": [\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ]\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/validateMoves",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"validateMoves"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestValidateMoveBlackPawn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has valid moves\", function () {\r",
+							"    const response = pm.response.json();\r",
+							"\r",
+							"    pm.expect(response).to.have.property(\"validMoves\");\r",
+							"    pm.expect(response.validMoves).to.be.an(\"array\");\r",
+							"    pm.expect(response.validMoves.length).to.be.above(0);\r",
+							"\r",
+							"    // Example: Check specific valid moves for a knight at (1, 0)\r",
+							"    const expectedMoves = [\r",
+							"        { x: 6, y: 4 },\r",
+							"        { x: 6, y: 5}\r",
+							"    ];\r",
+							"    expectedMoves.forEach(move => {\r",
+							"        pm.expect(response.validMoves).to.deep.include(move);\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"piece\": {\r\n        \"type\": \"PAWN\",\r\n        \"color\": \"BLACK\",\r\n        \"location\": {\r\n            \"x\": 6,\r\n            \"y\": 6\r\n        }\r\n    },\r\n    \"board\": [\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ]\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/validateMoves",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"validateMoves"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

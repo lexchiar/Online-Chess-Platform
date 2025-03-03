@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "requestType": {
+            "type": "string",
+            "required": true
+        },
+        "piece": {
+            "type": "object",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "required": true
+                },
+                "type": {
+                    "type": "string",
+                    "required": true
+                },
+                "location": {
+                    "type": "object",
+                    "properties": {
+                        "x": {
+                            "type": "integer",
+                            "required": true
+                        },
+                        "y": {
+                            "type": "integer",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        },
+        "board": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": [
+                        "object",
+                        "null"
+                    ]
+                }
+            },
+            "required": true
+        }
+    },
+    "additionalProperties": false
+}

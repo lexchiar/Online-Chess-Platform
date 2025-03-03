@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "f7e0bcaf-f4b5-47ce-9cad-c591cb0a2d8c",
+		"name": "ahuss12",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30025418"
+	},
+	"item": [
+		{
+			"name": "TestKingDiagonalMove",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has a status code of 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response validity for king diagonal move\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"\r",
+							"    // Check that the response indicates the move's validity\r",
+							"    pm.expect(responseJson.validity).to.equal(true, \"King diagonal move should be valid\");\r",
+							"\r",
+							"    // Additional checks to ensure the response structure is correct\r",
+							"    pm.expect(responseJson).to.have.all.keys(\"piece\", \"destination\", \"board\", \"validity\", \"requestType\");\r",
+							"    pm.expect(responseJson.requestType).to.equal(\"guestMove\");\r",
+							"    pm.expect(responseJson.destination).to.have.all.keys(\"x\", \"y\");\r",
+							"    pm.expect(responseJson.board).to.be.an(\"array\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"guestMove\",\r\n    \"piece\": {\r\n        \"color\": \"WHITE\",\r\n        \"type\": \"KING\",\r\n        \"location\": {\r\n            \"x\": 4,\r\n            \"y\": 0\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"x\": 5,\r\n        \"y\": 1\r\n    },\r\n    \"board\": [\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"KING\",\r\n                \"location\": {\r\n                    \"x\": 4,\r\n                    \"y\": 0\r\n                }\r\n            },\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null]\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/guestMove",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"guestMove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestKingSimpleMove",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has a status code of 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response validity for king move one step forward\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"\r",
+							"    // Check that the response indicates the move's validity\r",
+							"    pm.expect(responseJson.validity).to.equal(true, \"King move should be valid\");\r",
+							"    \r",
+							"    // Additional checks to ensure the response structure is correct\r",
+							"    pm.expect(responseJson).to.have.all.keys(\"piece\", \"destination\", \"board\", \"validity\", \"requestType\");\r",
+							"    pm.expect(responseJson.requestType).to.equal(\"guestMove\");\r",
+							"    pm.expect(responseJson.destination).to.have.all.keys(\"x\", \"y\");\r",
+							"    pm.expect(responseJson.board).to.be.an(\"array\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"guestMove\",\r\n    \"piece\": {\r\n        \"color\": \"WHITE\",\r\n        \"type\": \"KING\",\r\n        \"location\": {\r\n            \"x\": 4,\r\n            \"y\": 0\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"x\": 4,\r\n        \"y\": 1\r\n    },\r\n    \"board\": [\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"KING\",\r\n                \"location\": {\r\n                    \"x\": 4,\r\n                    \"y\": 0\r\n                }\r\n            },\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null]\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/guestMove",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"guestMove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestKingLeftMove",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has a status code of 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response validity for king left move\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"\r",
+							"    // Check that the response indicates the move's validity\r",
+							"    pm.expect(responseJson.validity).to.equal(true, \"King left move should be valid\");\r",
+							"\r",
+							"    // Additional checks to ensure the response structure is correct\r",
+							"    pm.expect(responseJson).to.have.all.keys(\"piece\", \"destination\", \"board\", \"validity\", \"requestType\");\r",
+							"    pm.expect(responseJson.requestType).to.equal(\"guestMove\");\r",
+							"    pm.expect(responseJson.destination).to.have.all.keys(\"x\", \"y\");\r",
+							"    pm.expect(responseJson.board).to.be.an(\"array\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"guestMove\",\r\n    \"piece\": {\r\n        \"color\": \"WHITE\",\r\n        \"type\": \"KING\",\r\n        \"location\": {\r\n            \"x\": 4,\r\n            \"y\": 4\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"x\": 3,\r\n        \"y\": 4\r\n    },\r\n    \"board\": [\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            {\r\n                \"color\": \"WHITE\",\r\n                \"type\": \"KING\",\r\n                \"location\": {\r\n                    \"x\": 4,\r\n                    \"y\": 4\r\n                }\r\n            },\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null]\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/guestMove",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"guestMove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StraightHorizontalRookTest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has a status code of 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response validity for rook straight move\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"\r",
+							"    // Check that the response indicates the move's validity\r",
+							"    pm.expect(responseJson.validity).to.equal(true, \"Rook straight move should be valid\");\r",
+							"\r",
+							"    // Additional checks to ensure the response structure is correct\r",
+							"    pm.expect(responseJson).to.have.all.keys(\"piece\", \"destination\", \"board\", \"validity\", \"requestType\");\r",
+							"    pm.expect(responseJson.requestType).to.equal(\"guestMove\");\r",
+							"    pm.expect(responseJson.destination).to.have.all.keys(\"x\", \"y\");\r",
+							"    pm.expect(responseJson.board).to.be.an(\"array\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"guestMove\",\r\n    \"piece\": {\r\n        \"color\": \"WHITE\",\r\n        \"type\": \"ROOK\",\r\n        \"location\": {\r\n            \"x\": 0,\r\n            \"y\": 0\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"x\": 0,\r\n        \"y\": 4\r\n    },\r\n    \"board\": [\r\n        [\r\n            {\"color\": \"WHITE\", \"type\": \"ROOK\", \"location\": {\"x\": 0, \"y\": 0}},\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null]\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/guestMove",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"guestMove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VerticalRookTest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response has a status code of 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response validity for rook vertical move\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"\r",
+							"    // Check that the response indicates the move's validity\r",
+							"    pm.expect(responseJson.validity).to.equal(true, \"Rook vertical move should be valid\");\r",
+							"\r",
+							"    // Additional checks to ensure the response structure is correct\r",
+							"    pm.expect(responseJson).to.have.all.keys(\"piece\", \"destination\", \"board\", \"validity\", \"requestType\");\r",
+							"    pm.expect(responseJson.requestType).to.equal(\"guestMove\");\r",
+							"    pm.expect(responseJson.destination).to.have.all.keys(\"x\", \"y\");\r",
+							"    pm.expect(responseJson.board).to.be.an(\"array\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"guestMove\",\r\n    \"piece\": {\r\n        \"color\": \"WHITE\",\r\n        \"type\": \"ROOK\",\r\n        \"location\": {\r\n            \"x\": 0,\r\n            \"y\": 0\r\n        }\r\n    },\r\n    \"destination\": {\r\n        \"x\": 4,\r\n        \"y\": 0\r\n    },\r\n    \"board\": [\r\n        [\r\n            {\"color\": \"WHITE\", \"type\": \"ROOK\", \"location\": {\"x\": 0, \"y\": 0}},\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null,\r\n            null\r\n        ],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null],\r\n        [null, null, null, null, null, null, null, null]\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/guestMove",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"guestMove"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
